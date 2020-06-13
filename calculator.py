@@ -10,11 +10,7 @@ class Module:
 
 
 def get_required_modules(modules):
-    req_mods = []
-    for mod in modules:
-        if mod.required:
-            req_mods.append(mod.code)
-    return req_mods
+    return [mod.code for mod in modules if mod.required]
 
 def get_permutations(modules, required_modules, max_creds = 100, max_creds_three = 100 , max_creds_two = 0, max_creds_one = 0):
     perms = []
