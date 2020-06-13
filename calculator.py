@@ -58,13 +58,12 @@ def perm_bt(perms, modules, required_modules, max_creds, max_creds_three, max_cr
         perm_bt(perms, remaining, required_modules, max_creds, max_creds_three, max_creds_two, max_creds_one, partial + [module])
 
 def get_perm_grade(perm):
-    total_credits = 0
-    grade = 0
-    for mod in perm:
-        total_credits += mod.credits
+    total_credits = sum(mod.credits for mod in perm)
+    grade = 0;
     for mod in perm:
         weight = mod.credits / total_credits
         grade += mod.grade * weight
+
     return grade
 
 def classification(modules, max_creds, max_creds_three, max_creds_two, max_creds_one):
